@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+
+<body>
+    <script>
+        // count how many specific char i an string; return times, and position index
+        function countChar(arr, targetChar) {
+            var positions = [];
+            var cnt = 0;
+            var startIdx = 0;
+            while (startIdx < arr.length) {
+                var idx = arr.indexOf(targetChar, startIdx);
+                if (idx == -1) break;
+                positions.push(idx);
+                startIdx = idx + 1;
+                cnt++;
+            }
+            return { positions, cnt }
+        }
+
+        // count the most frequent char in a string; return cnt
+        function countMost(str) {
+            var cnt = 0;
+            var appears = {};
+            for (var i = 0; i < str.length; i++) {
+                var objName = str.charAt(i);
+                console.log(objName);
+                if (appears[objName]) { //记住这里不能用apperars.objName!!!
+                    appears[objName]++;
+                } else {
+                    appears[objName] = 1;
+                }
+            }
+
+            console.log(appears);
+            // item the object
+            for (var i in appears) { // 这种方式遍历对象时，i是属性名字； 如果遍历数组，i是index； 用k可能更好
+                console.log(i);  
+                if (appears[i] > cnt) {
+                    cnt = appears[i];
+                }
+            }
+            return cnt;
+        }
+
+        console.log(countMost('fdfsdfjlafj'));
+        // console.log(countChar('leoriohope', 'o'))
+    </script>
+</body>
+
+</html>
