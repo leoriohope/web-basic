@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+</head>
+<body>
+    <script>
+        var date = new Date();
+        // console.log(date.valueOf());
+        // console.log(date.getTime());
+        // console.log(+new Date())
+        // console.log(Date.now());  //H5 以后新增方法， 有些老的浏览器不支持
+
+        // count down example
+        var countDown = function(time){
+            var inputTime = +new Date(time);
+            var nowTime = +new Date();
+            var seconds = (inputTime - nowTime) / 1000;
+            var d = parseInt(seconds / 60 / 60 / 24);
+            d = d < 10 ? '0' + d : d;
+            var h = parseInt(seconds / 60 /60 % 24);
+            h = h < 10 ? '0' + h : h;
+            var m = parseInt(seconds / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            var s = parseInt(seconds  % 60);
+            s = s < 10 ? '0' + s : s;
+            
+            return d + ':' + h + ':' + m + ':' + s;
+        }
+
+        console.log(countDown("2022-05-20 12:00:00"));
+    </script>
+</body>
+</html>
